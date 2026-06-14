@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack — Casino Royale</title>
+    <meta name="description" content="Play Blackjack online — a premium casino card game built with Python &amp; Flask">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Ambient particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="game-container" id="game-container">
+
+        <!-- Header -->
+        <header class="game-header" id="game-header">
+            <div class="header-decoration left">♠ ♥</div>
+            <div class="header-content">
+                <h1 class="game-title">BLACKJACK</h1>
+                <p class="game-subtitle">CASINO ROYALE</p>
+            </div>
+            <div class="header-decoration right">♦ ♣</div>
+        </header>
+
+        <!-- Game Table -->
+        <main class="game-table" id="game-table">
+
+            <!-- Dealer Section -->
+            <section class="hand-section dealer-section" id="dealer-section">
+                <div class="section-header">
+                    <div class="player-label">
+                        <span class="label-icon">🎩</span>
+                        <span class="label-text">DEALER</span>
+                    </div>
+                    <div class="score-badge" id="dealer-score-badge">
+                        <span class="score-label">Score</span>
+                        <span class="score-value" id="dealer-score">0</span>
+                    </div>
+                </div>
+                <div class="cards-area" id="dealer-cards">
+                    <!-- Cards will be rendered here by JS -->
+                </div>
+            </section>
+
+            <!-- Table Divider -->
+            <div class="table-divider" id="table-divider">
+                <div class="divider-line"></div>
+                <span class="divider-chip">VS</span>
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- Player Section -->
+            <section class="hand-section player-section" id="player-section">
+                <div class="section-header">
+                    <div class="player-label">
+                        <span class="label-icon">😎</span>
+                        <span class="label-text">YOU</span>
+                    </div>
+                    <div class="score-badge" id="player-score-badge">
+                        <span class="score-label">Score</span>
+                        <span class="score-value" id="player-score">0</span>
+                    </div>
+                </div>
+                <div class="cards-area" id="player-cards">
+                    <!-- Cards will be rendered here by JS -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Controls -->
+        <div class="controls" id="controls">
+            <button class="btn btn-hit" id="btn-hit" disabled onclick="handleHit()">
+                <span class="btn-icon">🃏</span>
+                <span class="btn-text">HIT</span>
+            </button>
+            <button class="btn btn-stand" id="btn-stand" disabled onclick="handleStand()">
+                <span class="btn-icon">✋</span>
+                <span class="btn-text">STAND</span>
+            </button>
+            <button class="btn btn-new-game" id="btn-new-game" onclick="handleNewGame()">
+                <span class="btn-icon">🎰</span>
+                <span class="btn-text">NEW GAME</span>
+            </button>
+        </div>
+
+        <!-- Status Message -->
+        <div class="message-bar" id="message-bar">
+            <p class="message-text" id="message-text">Press NEW GAME to start playing!</p>
+        </div>
+    </div>
+
+    <!-- Result Overlay -->
+    <div class="result-overlay" id="result-overlay">
+        <div class="result-card" id="result-card">
+            <div class="result-glow" id="result-glow"></div>
+            <div class="result-emoji" id="result-emoji">🏆</div>
+            <h2 class="result-title" id="result-title">You Win!</h2>
+            <div class="result-scores" id="result-scores">
+                <div class="result-score-item">
+                    <span class="rsi-label">You</span>
+                    <span class="rsi-value" id="result-player-score">21</span>
+                </div>
+                <div class="result-score-divider">—</div>
+                <div class="result-score-item">
+                    <span class="rsi-label">Dealer</span>
+                    <span class="rsi-value" id="result-dealer-score">18</span>
+                </div>
+            </div>
+            <button class="btn btn-play-again" id="btn-play-again" onclick="handleNewGame()">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">PLAY AGAIN</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="/static/js/game.js"></script>
+</body>
+</html>
